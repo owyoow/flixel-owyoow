@@ -1,4 +1,4 @@
-package owyoow;
+package owyoow.mobile;
 
 import flash.Lib;
 import flixel.math.FlxRect;

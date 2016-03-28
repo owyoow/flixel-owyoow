@@ -1,6 +1,5 @@
-package flixel.addons.nape;
+package owyoow.nape;
 
-import flixel.addons.nape.NapeSpace;
 import flixel.FlxG;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;

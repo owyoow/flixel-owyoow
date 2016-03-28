@@ -1,4 +1,4 @@
-package flixel.addons.nape;
+package owyoow.nape;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets;
