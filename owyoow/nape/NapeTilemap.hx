@@ -16,7 +16,7 @@ import nape.shape.Polygon;
 /**
  * @author KeyMaster
  */
-class FlxNapeTilemap extends FlxTilemap 
+class NapeTilemap extends FlxTilemap 
 {
 	public var body:Body;
 	

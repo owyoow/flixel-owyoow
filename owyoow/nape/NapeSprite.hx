@@ -12,14 +12,14 @@ import nape.shape.Polygon;
 import nape.space.Space;
 
 /**
- * FlxNapeSprite consists of a FlxSprite with a physics body.
+ * NapeSprite consists of a FlxSprite with a physics body.
  * During the simulation, the sprite follows the physics body position and rotation.
  * 
  * By default, a rectangular physics body is created upon construction in createRectangularBody().
  * 
  * @author TiagoLr ( ~~~ProG4mr~~~ )
  */
-class FlxNapeSprite extends FlxSprite
+class NapeSprite extends FlxSprite
 {
 	/**
 	 * The physics body associated with this sprite. 
@@ -44,7 +44,7 @@ class FlxNapeSprite extends FlxSprite
 	private var _angularDrag:Float = 1;
 
 	/**
-	 * Creates a FlxNapeSprite with an optional physics body.
+	 * Creates a NapeSprite with an optional physics body.
 	 * At each step, the physics are updated, and so is the position and rotation of the sprite 
 	 * to match the bodys position and rotation values.
 	 * By default, a physics body with a rectangular shape will be created for the sprite's graphic.
