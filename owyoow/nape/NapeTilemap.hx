@@ -1,6 +1,6 @@
 package flixel.addons.nape;
 
-import flixel.addons.nape.FlxNapeSpace;
+import flixel.addons.nape.NapeSpace;
 import flixel.FlxG;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
@@ -27,7 +27,7 @@ class FlxNapeTilemap extends FlxTilemap
 	{
 		super();
 		body = new Body(BodyType.STATIC);
-		body.space = FlxNapeSpace.space;
+		body.space = NapeSpace.space;
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -91,7 +91,7 @@ class FlxNapeTilemap extends FlxTilemap
 		
 		body.shapes.add(new Polygon(vertices, mat));
 		
-		body.space = FlxNapeSpace.space;
+		body.space = NapeSpace.space;
 	}
 	
 	public function placeCustomPolygon(tileIndices:Array<Int>, vertices:Array<Vec2>, ?mat:Material)
@@ -113,7 +113,7 @@ class FlxNapeTilemap extends FlxTilemap
 			
 		}
 		
-		body.space = FlxNapeSpace.space;
+		body.space = NapeSpace.space;
 	}
 	
 	/**
@@ -171,7 +171,7 @@ class FlxNapeTilemap extends FlxTilemap
 	#if !FLX_NO_DEBUG
 	override public function drawDebug():Void 
 	{
-		if (!FlxNapeSpace.drawDebug)
+		if (!NapeSpace.drawDebug)
 		{
 			super.drawDebug();
 		}
@@ -252,7 +252,7 @@ class FlxNapeTilemap extends FlxTilemap
 			rect.put();
 		}
 		
-		body.space = FlxNapeSpace.space;
+		body.space = NapeSpace.space;
 	}
 	
 	/**

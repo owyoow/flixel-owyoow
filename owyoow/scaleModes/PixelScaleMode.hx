@@ -1,6 +1,7 @@
-package flixel.system.scaleModes;
+package owyoow.scaleModes;
 
 import flixel.FlxG;
+import flixel.system.scaleModes.BaseScaleMode;
 
 /**
  * ...
@@ -23,7 +24,7 @@ class PixelScaleMode extends BaseScaleMode
 	{
 		var zoom:Int = Std.int(Math.max(Math.floor(width / _baseWidth), Math.floor(height / _baseHeight)));
 		if (zoom < 1) zoom = 1;
-		trace(zoom);
+		
 		gameSize.x = FlxG.width * zoom;
 		gameSize.y = FlxG.height * zoom;		
 	}

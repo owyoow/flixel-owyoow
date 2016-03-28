@@ -1,4 +1,4 @@
-package owyoow;
+package owyoow.nape;
 
 import flixel.util.FlxDestroyUtil.IFlxDestroyable;
 import nape.geom.Vec2;

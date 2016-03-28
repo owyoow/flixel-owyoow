@@ -1,4 +1,4 @@
-package flixel.addons.nape;
+package owyoow.nape;
 
 import flash.display.BitmapData;
 import flixel.FlxBasic;
@@ -14,15 +14,17 @@ import nape.space.Space;
 #if !FLX_NO_DEBUG
 import nape.util.ShapeDebug;
 
+using flixel.util.FlxArrayUtil;
+
 @:bitmap("assets/images/napeDebug.png")
 class GraphicNapeDebug extends BitmapData {}
 #end
 
 /**
- * FlxNapeSpace is a flixel plugin that integrates nape.space.Space
+ * NapeSpace is a flixel plugin that integrates nape.space.Space
  * to provide Nape physics simulation in Flixel.
  */
-class FlxNapeSpace extends FlxBasic
+class NapeSpace extends FlxBasic
 {
 	public static var space:Space;
 	
@@ -55,6 +57,9 @@ class FlxNapeSpace extends FlxBasic
 	 */
 	public static var shapeDebug(default, null):ShapeDebug;
 	private static var drawDebugButton:FlxSystemButton;
+
+	private static var debugRays:Array<DebugRay>;
+
 	#end
 	
 	/**
@@ -63,7 +68,7 @@ class FlxNapeSpace extends FlxBasic
 	 */
 	public static function init():Void
 	{
-		FlxG.plugins.add(new FlxNapeSpace());
+		FlxG.plugins.add(new NapeSpace());
 		
 		if (space == null)
 		{
@@ -80,6 +85,16 @@ class FlxNapeSpace extends FlxBasic
 		}, true, true);
 		drawDebug = false;
 		#end
+	}
+
+	public static function addDebugRay(ray:DebugRay):Void
+	{
+		if(debugRays == null)
+		{
+			debugRays = new Array();
+		}
+
+		debugRays.push(ray);
 	}
 	
 	/**
@@ -142,6 +157,11 @@ class FlxNapeSpace extends FlxBasic
 				shapeDebug.thickness = 1;
 				FlxG.addChildBelowMouse(shapeDebug.display);
 			}
+
+			if(debugRays == null)
+			{
+				debugRays = new Array();
+			}
 		}
 		else if (shapeDebug != null)
 		{
@@ -150,7 +170,7 @@ class FlxNapeSpace extends FlxBasic
 		}
 		#end
 		
-		return FlxNapeSpace.drawDebug = drawDebug;
+		return NapeSpace.drawDebug = drawDebug;
 	}
 	
 	private static function onStateSwitch():Void
@@ -193,6 +213,13 @@ class FlxNapeSpace extends FlxBasic
 		
 		shapeDebug.clear();
 		shapeDebug.draw(space);
+
+		for(ray in debugRays)
+		{
+			shapeDebug.drawLine(ray.start, ray.end, ray.color);
+		}
+
+		debugRays.setLength(0);
 		
 		var zoom = FlxG.camera.zoom;
 		var sprite = shapeDebug.display;

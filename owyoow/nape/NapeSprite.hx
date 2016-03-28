@@ -118,7 +118,7 @@ class FlxNapeSprite extends FlxSprite
 		
 		if (body != null)
 		{
-			body.space = FlxNapeSpace.space;
+			body.space = NapeSpace.space;
 		}
 	}
 	
@@ -217,8 +217,8 @@ class FlxNapeSprite extends FlxSprite
 	{
 		if (body != null) 
 		{
-			if (FlxNapeSpace.space != null)
-				FlxNapeSpace.space.bodies.remove(body);
+			if (NapeSpace.space != null)
+				NapeSpace.space.bodies.remove(body);
 			body = null;
 		}
 	}
@@ -243,7 +243,7 @@ class FlxNapeSprite extends FlxSprite
 	 */	
 	override public function drawDebug():Void
 	{
-		if (!FlxNapeSpace.drawDebug)
+		if (!NapeSpace.drawDebug)
 		{
 			super.drawDebug();
 		}
@@ -287,7 +287,7 @@ class FlxNapeSprite extends FlxSprite
 	private inline function set_physicsEnabled(Value:Bool):Bool
 	{
 		if (body != null)
-			body.space = Value ? FlxNapeSpace.space : null;
+			body.space = Value ? NapeSpace.space : null;
 		return physicsEnabled = Value;
 	}
 	
