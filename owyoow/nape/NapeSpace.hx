@@ -89,12 +89,14 @@ class NapeSpace extends FlxBasic
 
 	public static function addDebugRay(ray:DebugRay):Void
 	{
+		#if ! FLX_NO_DEBUG
 		if(debugRays == null)
 		{
 			debugRays = new Array();
 		}
 
 		debugRays.push(ray);
+		#end
 	}
 	
 	/**
