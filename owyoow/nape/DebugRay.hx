@@ -20,7 +20,7 @@ class DebugRay implements IFlxDestroyable
 
     public function destroy ():Void
     {
-        start.dispose();
-        end.dispose();
+        origin.dispose();
+        direction.dispose();
     }
 }

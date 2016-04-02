@@ -218,7 +218,7 @@ class NapeSpace extends FlxBasic
 
 		for(ray in debugRays)
 		{
-			shapeDebug.drawLine(ray.origin, ray.origin * ray.length, ray.color);
+			shapeDebug.drawLine(ray.origin, Vec2.weak(ray.origin.x + ray.direction * ray.length, ray.origin.y + ray.direction.y * ray.length) , ray.color);
 		}
 
 		debugRays.setLength(0);
