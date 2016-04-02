@@ -7,7 +7,7 @@ class DebugRay implements IFlxDestroyable
 {
     public var origin(default, null):Vec2;
     public var direction(default, null):Vec2;
-    public var length(default, null):Float
+    public var length(default, null):Float;
     public var color(default, set):Int;
 
     public function new (origin:Vec2, direction:Vec2, length:Float, color:Int = 0xFFFFFFFF)
