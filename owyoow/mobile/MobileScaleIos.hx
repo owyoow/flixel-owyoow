@@ -12,7 +12,7 @@ class MobileScaleIos
     public static var scale(default, null):Float;
     public static var suffix(default, null):String;
 
-    public static function getGameSize (designWidth:Float, designHeight:Float, isLandscape:Bool):FlxRect
+    public static function getGameSize (designWidth:Float, designHeight:Float, isLandscape:Bool, loResTesting:Bool):FlxRect
     {
         var gameRect:FlxRect = FlxRect.get();
 
@@ -35,9 +35,12 @@ class MobileScaleIos
             suffix = "";
         }
 
-        // for testing only on designScale should be commented out in final build
-        //scale = 1;
-        //suffix = "";
+        // for testing lo-res assets on hi-res devices
+        if(loResTesting)
+        {
+            scale = 1;
+            suffix = "";
+        }
 
         var defaultAspect:Float = designWidth / designHeight;
         var deviceAspect:Float = deviceRect.width / deviceRect.height;
