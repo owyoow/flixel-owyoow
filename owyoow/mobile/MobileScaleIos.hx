@@ -12,7 +12,7 @@ class MobileScaleIos
     public static var scale(default, null):Float;
     public static var suffix(default, null):String;
 
-    public static function getGameSize (designWidth:Float, designHeight:Float, isLandscape:Bool, loResTesting:Bool):FlxRect
+    public static function getGameSize (designWidth:Float, designHeight:Float, isLandscape:Bool = true, loResTesting:Bool = false):FlxRect
     {
         var gameRect:FlxRect = FlxRect.get();
 
