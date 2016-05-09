@@ -1,7 +1,7 @@
 package owyoow.mobile;
 
 import flash.Lib;
-import flixel.math.FlxRect;
+import owyoow.math.IntRect;
 
 class MobileScaleIos
 {
@@ -12,12 +12,11 @@ class MobileScaleIos
     public static var scale(default, null):Float;
     public static var suffix(default, null):String;
 
-    public static function getGameSize (designWidth:Float, designHeight:Float, isLandscape:Bool = true, loResTesting:Bool = false):FlxRect
+    public static function getGameSize (designWidth:Float, designHeight:Float, isLandscape:Bool = true, loResTesting:Bool = false):IntRect
     {
-        var gameRect:FlxRect = FlxRect.get();
+        var gameRect:IntRect = {x:0, y:0, width:0, height:0};
 
-        var deviceRect:FlxRect = FlxRect.weak(0, 0, Lib.current.stage.stageWidth, Lib.current.stage.stageHeight);
-        //trace("device width: " + Lib.current.stage.stageWidth + ", height: " + Lib.current.stage.stageHeight);
+        var deviceRect:IntRect = {x:0, y:0, width:Lib.current.stage.stageWidth, height:Lib.current.stage.stageHeight};        
 
         if (deviceRect.height >= AT_4_X_HEIGHT && !isLandscape || deviceRect.width >= AT_4_X_HEIGHT && isLandscape)
         {
