@@ -1,4 +1,4 @@
-package;
+package owyoow.math;
 
 typedef IntRect = {
     
