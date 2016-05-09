@@ -45,12 +45,12 @@ class MobileScaleIos
         var deviceAspect:Float = deviceRect.width / deviceRect.height;
         if (deviceAspect > defaultAspect)
         {
-            gameRect.height = designHeight * scale;
+            gameRect.height = Std.int(designHeight * scale);
             gameRect.width = Math.ceil(((gameRect.height * deviceAspect) / 2.0) * 2);
         }
         else
         {
-            gameRect.width = designWidth * scale;
+            gameRect.width = Std.int(designWidth * scale);
             gameRect.height = Math.ceil(((gameRect.width / deviceAspect) / 2.0) * 2);
         }
 
