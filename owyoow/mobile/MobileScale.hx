@@ -1,7 +1,7 @@
 package owyoow.mobile;
 
 import flash.Lib;
-import flixel.math.FlxRect;
+import owyoow.math.IntRect;
 
 class MobileScale 
 {
@@ -9,17 +9,16 @@ class MobileScale
     private static inline var AT_15_X_HEIGHT:Int = 720;
     private static inline var AT_20_X_HEIGHT:Int = 960;
     private static inline var AT_30_X_HEIGHT:Int = 1200;
-    private static inline var AT_40_X_HEIGHT:Int = 1920;
+    private static inline var AT_40_X_HEIGHT:Int = 1900;
 
     public static var scale(default, null):Float;
     public static var suffix(default, null):String;
 
-    public static function getGameSize (designWidth:Float, designHeight:Float, isLandscape:Bool):FlxRect
+    public static function getGameSize (designWidth:Float, designHeight:Float, isLandscape:Bool = false, loResTesting:Bool = false):IntRect
     {
-        var gameRect:FlxRect = FlxRect.get();
+        var gameRect:IntRect = {x:0, y:0, width:0, height:0};
 
-        var deviceRect:FlxRect = FlxRect.weak(0, 0, Lib.current.stage.stageWidth, Lib.current.stage.stageHeight);
-        //trace("device width: " + Lib.current.stage.stageWidth + ", height: " + Lib.current.stage.stageHeight);
+        var deviceRect:IntRect = {x:0, y:0, width:Lib.current.stage.stageWidth, height:Lib.current.stage.stageHeight};
 
         if (deviceRect.height >= AT_40_X_HEIGHT && !isLandscape || deviceRect.width >= AT_40_X_HEIGHT && isLandscape)
         {
@@ -39,7 +38,7 @@ class MobileScale
         else if (deviceRect.height >= AT_15_X_HEIGHT && !isLandscape || deviceRect.width >= AT_15_X_HEIGHT && isLandscape)
         {
             scale = 1.5;
-            suffix = "@15x";
+            suffix = "@1.5x";
         }
         else
         {
@@ -47,20 +46,24 @@ class MobileScale
             suffix = "";
         }
 
-        // for testing only on designScale should be commented out in final build
-        scale = 1;
-        suffix = "";
+        // for testing only on designScale
+        if (loResTesting)
+        {
+            scale = 1;
+            suffix = "";
+        }
+        
 
         var defaultAspect:Float = designWidth / designHeight;
         var deviceAspect:Float = deviceRect.width / deviceRect.height;
         if (deviceAspect > defaultAspect)
         {
-            gameRect.height = designHeight * scale;
+            gameRect.height = Std.int(designHeight * scale);
             gameRect.width = Math.ceil(((gameRect.height * deviceAspect) / 2.0) * 2);
         }
         else
         {
-            gameRect.width = designWidth * scale;
+            gameRect.width = Std.int(designWidth * scale);
             gameRect.height = Math.ceil(((gameRect.width / deviceAspect) / 2.0) * 2);
         }
 
